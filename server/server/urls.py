@@ -21,5 +21,6 @@ import my_site.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', my_site.views.index_page)
+    path('', my_site.views.index_page),
+    path("calc/", my_site.views.calc_page)
 ]

@@ -1,0 +1,28 @@
+{% extends "base_htmls/base.html" %}
+
+{% block main %}
+<section>
+    <h2>Форма для калькулятора</h2>
+    <form action="/calc/" method="post">
+        {% csrf_token %}
+        {{ calc_form }}
+        <br>
+        <input type="submit" value="Отправить данные на сервер">
+    </form>
+</section>
+<section>
+    <h2>История для калькулятора</h2>
+    <ol>
+        {% for item_history in calc_history %}
+        <li>
+            Операция за дату {{ item_history.date }}
+            <ol>
+                <li>Первое число -- {{ item_history.first_number }}</li>
+                <li>Второе число -- {{ item_history.second_number }}</li>
+                <li>Результат -- {{ item_history.result_number }}</li>
+            </ol>
+        </li>
+        {% endfor %}
+    </ol>
+</section>
+{% endblock %}
