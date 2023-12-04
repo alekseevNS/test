@@ -1,8 +1,20 @@
-<h1>Текущая страница -- {{ page_name }}</h1>
-<ul>
-    {% for menu_item in menu %}
-    {% if menu_item.text != page_name %}
-    <li><a href="{{ menu_item.link }}">{{ menu_item.text }}</a></li>
-    {% endif %}
-    {% endfor %}
-</ul>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ current_link }}">{{ page_name }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for menu_item in menu %}
+                {% if menu_item.text != page_name %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ menu_item.link }}">{{ menu_item.text }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

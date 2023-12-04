@@ -15,13 +15,13 @@ def get_default_menu() -> tuple:
 
 
 def index_page(request: HttpRequest) -> HttpResponse:
-    context = {"page_name": "Главная", "menu": get_default_menu()}
+    context = {"page_name": "Главная", "menu": get_default_menu(), "current_link": '/'}
 
     return render(request, "index.html", context)
 
 
 def calc_page(request: HttpRequest) -> HttpResponse:
-    context = {"page_name": "Калькулятор", "menu": get_default_menu()}
+    context = {"page_name": "Калькулятор", "menu": get_default_menu(), "current_link": "/calc/"}
 
     if request.method == "POST":
         calc_form_get = CalcForm(request.POST)
