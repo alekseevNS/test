@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
-</head>
-<body>
-<main>
-    <h1>Я сделал сайт!</h1>
-</main>
-</body>
-</html>
+<!--1. Нужно отнаследовать html-файл-->
+{% extends "base_htmls/base.html" %}
+
+<!--2. А теперь просто выбирайте доступные для редактирования блоки и редактируйте их!-->
+{% block main %}
+<h1>Я сделал сайт!</h1>
+{% endblock %}

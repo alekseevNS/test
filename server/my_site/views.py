@@ -3,6 +3,6 @@ from django.shortcuts import render
 
 
 def index_page(request: HttpRequest) -> HttpResponse:
-    context = dict()
+    context = {"page_name": "Главная"}
 
     return render(request, "index.html", context)
