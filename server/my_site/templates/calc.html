@@ -1,45 +1,54 @@
 {% extends "base_htmls/base.html" %}
 
 {% block main %}
-<section>
-    <!--    <h2>Форма для калькулятора</h2>-->
-    <!--    <form action="/calc/" method="post">-->
-    <!--        {% csrf_token %}-->
-    <!--        {{ calc_form }}-->
-    <!--        <br>-->
-    <!--        <input type="submit" value="Отправить данные на сервер">-->
-    <!--    </form>-->
-    <div class="card mb-3">
-        <div class="card-header">Форма для калькулятора</div>
-        <div class="card-body">
-            <form action="/calc/" method="post">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="id_first_number" class="form-label">{{ calc_form.first_number.label }}</label>
-                    {{ calc_form.first_number }}
+<div class="row">
+    <div class="col">
+        <section>
+            <div class="container">
+                <div class="card mb-3">
+                    <div class="card-header">Форма для калькулятора</div>
+                    <div class="card-body">
+                        <form action="/calc/" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_first_number"
+                                       class="form-label">{{ calc_form.first_number.label }}</label>
+                                {{ calc_form.first_number }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_second_number"
+                                       class="form-label">{{ calc_form.second_number.label }}</label>
+                                {{ calc_form.second_number }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить на сервер</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="id_second_number" class="form-label">{{ calc_form.second_number.label }}</label>
-                    {{ calc_form.second_number }}
-                </div>
-                <button type="submit" class="btn btn-primary">Отправить на сервер</button>
-            </form>
-        </div>
+            </div>
+        </section>
     </div>
-</section>
-<section>
-    <h2>История для калькулятора</h2>
-    <ol>
-        {% for item_history in calc_history %}
-        <li>
-            Операция за дату {{ item_history.date }}
-            <ol>
-                <li>Первое число -- {{ item_history.first_number }}</li>
-                <li>Второе число -- {{ item_history.second_number }}</li>
-                <li>Результат -- {{ item_history.result_number }}</li>
-            </ol>
-        </li>
-        {% endfor %}
-    </ol>
-</section>
+    <div class="col">
+        <section>
+            <div class="container">
+                <div class="card mb-3">
+                    <div class="card-header">История для калькулятора</div>
+                    <div class="card-body">
+                        <ol class="list-group">
+                            {% for item_history in calc_history %}
+                            <li class="list-group-item">
+                                Операция за дату {{ item_history.date }}
+                                <ol>
+                                    <li>Первое число -- {{ item_history.first_number }}</li>
+                                    <li>Второе число -- {{ item_history.second_number }}</li>
+                                    <li>Результат -- {{ item_history.result_number }}</li>
+                                </ol>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 {% endblock %}
