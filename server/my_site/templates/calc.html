@@ -2,13 +2,30 @@
 
 {% block main %}
 <section>
-    <h2>Форма для калькулятора</h2>
-    <form action="/calc/" method="post">
-        {% csrf_token %}
-        {{ calc_form }}
-        <br>
-        <input type="submit" value="Отправить данные на сервер">
-    </form>
+    <!--    <h2>Форма для калькулятора</h2>-->
+    <!--    <form action="/calc/" method="post">-->
+    <!--        {% csrf_token %}-->
+    <!--        {{ calc_form }}-->
+    <!--        <br>-->
+    <!--        <input type="submit" value="Отправить данные на сервер">-->
+    <!--    </form>-->
+    <div class="card mb-3">
+        <div class="card-header">Форма для калькулятора</div>
+        <div class="card-body">
+            <form action="/calc/" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_first_number" class="form-label">{{ calc_form.first_number.label }}</label>
+                    {{ calc_form.first_number }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_second_number" class="form-label">{{ calc_form.second_number.label }}</label>
+                    {{ calc_form.second_number }}
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить на сервер</button>
+            </form>
+        </div>
+    </div>
 </section>
 <section>
     <h2>История для калькулятора</h2>
